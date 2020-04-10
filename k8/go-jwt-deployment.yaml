@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-jwt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: go-jwt
+  template:
+    metadata:
+      labels:
+        component: go-jwt
+    spec:
+      containers:
+        - name: client
+          image: navalta3030/go-jwt
+          ports:
+            - containerPort: 8020
+          resources:
+            requests:
+              memory: 100Mi
+              cpu: 100m
