@@ -1,7 +1,11 @@
 package models
 
+import (
+	"github.com/dgrijalva/jwt-go"
+)
+
+// JwtPayload - interface of the payloadjson
 type JwtPayload struct {
-	AccessToken  map[string]string `json:"access_token"`
-	RefreshToken map[string]string `json:"refresh_token"`
-	Exp          int64
+	AccessToken  jwt.MapClaims
+	RefreshToken jwt.MapClaims
 }
