@@ -1,11 +1,13 @@
-package utils
+package controllers
 
 import (
+	"encoding/json"
 	"log"
 	"net/http"
 	"time"
 
-	models "go_jwt_generator/models"
+	"go_jwt_generator/constants"
+	"go_jwt_generator/models"
 
 	"github.com/dgrijalva/jwt-go"
 )
@@ -13,32 +15,43 @@ import (
 var (
 	jwtResponse  models.Jwt
 	jwtPayload   models.JwtPayload
+	jwtPostBody  models.JwtPostBody
 	jwtExp       = 5 // in minutes
 	jwtHeaderKid = "sim2"
-	jwtSecret    = "secret"
+	jwtSecret    = "secret" // encode this one into Base64 and change the static/auth.json k property
 )
 
-// GeneratePayload - shall generate token
-func GeneratePayload(w http.ResponseWriter, r *http.Request) {
+// GenerateJWTFromPayload - shall generate token
+func GenerateJWTFromPayload(w http.ResponseWriter, r *http.Request) {
 
+	// get the body post message
+	decoder := json.NewDecoder(r.Body)
+	err := decoder.Decode(&jwtPostBody)
+	if err != nil {
+		panic(err)
+	}
+
+	//200
 	w.WriteHeader(http.StatusOK)
 	jwtPayload.AccessToken = jwt.MapClaims{
-		"aud": "http://api.example.com",
-		"iss": "https://krakend.io",
-		"sub": "1234567890qwertyuio",
-		"jti": "mnb23vcsrt756yuiomnbvcx98ertyuiop",
-		"exp": getExpiration(),
+		"name":  jwtPostBody.Name,
+		"email": jwtPostBody.Email,
+		"aud":   constants.Aud,
+		"iss":   constants.Iss,
+		"sub":   constants.Sub,
+		"jti":   constants.Jti,
+		"exp":   getExpiration(),
 	}
 
 	jwtPayload.RefreshToken = jwt.MapClaims{
-		"aud": "http://api.example.com",
-		"iss": "https://krakend.io",
-		"sub": "1234567890qwertyuio",
-		"jti": "mnb23vcsrt756yuiomn12876bvcx98ertyuiop",
+		"aud": constants.Aud,
+		"iss": constants.Iss,
+		"sub": constants.Sub,
+		"jti": constants.Jti,
 		"exp": getExpiration(),
 	}
 
-	// Get all the
+	// Gather all objects for the JwtResponse
 	jwtResponse.AccessToken = getAccessToken(jwtPayload.AccessToken)
 	jwtResponse.RefreshToken = getRefreshToken(jwtPayload.RefreshToken)
 	jwtResponse.Exp = getExpiration()

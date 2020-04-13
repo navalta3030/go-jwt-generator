@@ -9,3 +9,8 @@ type JwtPayload struct {
 	AccessToken  jwt.MapClaims
 	RefreshToken jwt.MapClaims
 }
+
+type JwtPostBody struct {
+	Name  string
+	Email string
+}
