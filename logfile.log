@@ -1,0 +1,24 @@
+jwt_go_generator2020/04/13 20:28:36 Starting logger
+jwt_go_generator2020/04/13 20:30:05 Starting logger
+jwt_go_generator2020/04/13 20:30:32 Starting logger
+General Logger:	2020/04/13 20:32:08 JwtGenerator.go:37: Accepting request from name: mark
+General Logger:	2020/04/13 20:32:12 JwtGenerator.go:37: Accepting request from name: mark
+General Logger:	2020/04/13 20:32:14 JwtGenerator.go:37: Accepting request from name: mark
+General Logger:	2020/04/13 20:33:56 JwtGenerator.go:37: Accepting request from name: mark
+General Logger:	2020/04/13 20:33:56 JwtGenerator.go:61: Returning request from: mark
+General Logger:	2020/04/13 20:33:56 JwtGenerator.go:37: Accepting request from name: mark
+General Logger:	2020/04/13 20:33:56 JwtGenerator.go:61: Returning request from: mark
+General Logger:	2020/04/13 20:33:57 JwtGenerator.go:37: Accepting request from name: mark
+General Logger:	2020/04/13 20:33:57 JwtGenerator.go:61: Returning request from: mark
+General Logger:	2020/04/13 20:41:32 JwtGeneratorRoute.go:37: Accepting request from name: mark
+General Logger:	2020/04/13 20:41:32 JwtGeneratorRoute.go:61: Returning request from: mark
+General Logger:	2020/04/13 20:43:58 JwtGeneratorRoute.go:37: Accepting request from name: Mark Christian Navalta
+General Logger:	2020/04/13 20:43:58 JwtGeneratorRoute.go:61: Returning request from: Mark Christian Navalta
+General Logger:	2020/04/13 20:56:22 JwtGeneratorRoute.go:37: Accepting request from name: Mark Christian Navalta
+General Logger:	2020/04/13 20:56:22 JwtGeneratorRoute.go:61: Returning request from: Mark Christian Navalta
+General Logger:	2020/04/13 20:56:46 JwtGeneratorRoute.go:37: Accepting request from name: Mark Christian Navalta
+General Logger:	2020/04/13 20:56:46 JwtGeneratorRoute.go:61: Returning request from: Mark Christian Navalta
+General Logger:	2020/04/13 20:58:56 JwtGeneratorRoute.go:37: Accepting request from name: Mark Christian Navalta
+General Logger:	2020/04/13 20:58:56 JwtGeneratorRoute.go:61: Returning request from: Mark Christian Navalta
+General Logger:	2020/04/13 21:06:38 JwtGeneratorRoute.go:37: Accepting request from name: Mark Christian Navalta
+General Logger:	2020/04/13 21:06:38 JwtGeneratorRoute.go:61: Returning request from: Mark Christian Navalta

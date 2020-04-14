@@ -3,20 +3,24 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 
 	"go_jwt_generator/constants"
-	"go_jwt_generator/controllers"
+	"go_jwt_generator/routes"
 )
 
 func main() {
 
 	r := mux.NewRouter()
-	r.HandleFunc("/token", controllers.GenerateJWTFromPayload).Methods("POST")
+	r.HandleFunc("/token", routes.GenerateJWTFromPayload)
 
 	r.PathPrefix("/").Handler(http.FileServer(http.Dir("./static/")))
+	loggedRouter := handlers.LoggingHandler(os.Stdout, r)
 
 	log.Println("Listen on port 8020...")
-	log.Fatal(http.ListenAndServe(constants.Port, r))
+	// originsOk := handlers.AllowedOrigins([]string{"*"})
+	log.Fatal(http.ListenAndServe(constants.Port, handlers.CORS()(loggedRouter)))
 }

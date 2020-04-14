@@ -15,6 +15,10 @@ var (
 	Jti = getEnvironmentVariable("JWT_JTI", "mnb23vcsrt756yuiomnbvcx98ertyuiop")
 	// Port - Constant variable
 	Port = getEnvironmentVariable("JWT_PORT", ":8020")
+	// JwtSecret - Constant variable
+	JwtSecret = getEnvironmentVariable("JWT_SECRET", "secret") // encode this one into Base64 and change the static/auth.json k property
+	// JwtHeaderKid - Constant variable
+	JwtHeaderKid = getEnvironmentVariable("JWT_HEADER_KID", "sim2")
 )
 
 func getEnvironmentVariable(EnvName string, defaultValue string) string {
