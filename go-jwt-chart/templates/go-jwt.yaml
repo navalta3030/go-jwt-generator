@@ -1,0 +1,35 @@
+apiVersion: apps/{{ template "version.fullname" .}}
+kind: Deployment
+metadata:
+  name: {{ template "go_jwt.fullname" .}}
+spec:
+  replicas: {{ template "replicas.fullname" .}}
+  selector:
+    matchLabels:
+      component: {{ template "go_jwt.fullname" .}}
+  template:
+    metadata:
+      labels:
+        component: {{ template "go_jwt.fullname" .}}
+    spec:
+      containers:
+        - name: client
+          image: navalta3030/{{ template "go_jwt.fullname" .}}
+          ports:
+            - containerPort: 8020
+          resources:
+            requests:
+              memory: 100Mi
+              cpu: 100m
+---
+apiVersion: {{ template "version.fullname" .}}
+kind: Service
+metadata:
+  name: {{ template "go_jwt.fullname" .}}
+spec:
+  type: ClusterIP
+  selector:
+    component: {{ template "go_jwt.fullname" .}}
+  ports:
+    - name: endpoint
+      port: 8020
