@@ -6,11 +6,11 @@ import (
 
 var (
 	// Aud - Constant variable
-	Aud = getEnvironmentVariable("JWT_AUDIENCE", "http://localhost")
+	Aud = getEnvironmentVariable("JWT_AUDIENCE", "http://xray.marknavalta.com")
 	// Iss - Constant variable
-	Iss = getEnvironmentVariable("JWT_ISSUER", "https://marknavalta.com")
+	Iss = getEnvironmentVariable("JWT_ISSUER", "https://xray.marknavalta.com")
 	// Sub - Constant variable
-	Sub = getEnvironmentVariable("JWT_SUBJECT", "1234567890qwertyuio")
+	Sub = getEnvironmentVariable("JWT_SUBJECT", "information")
 	// Jti - Constant variable
 	Jti = getEnvironmentVariable("JWT_JTI", "mnb23vcsrt756yuiomnbvcx98ertyuiop")
 	// Port - Constant variable

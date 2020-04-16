@@ -15,7 +15,7 @@ import (
 func main() {
 
 	r := mux.NewRouter()
-	r.HandleFunc("/token", routes.GenerateJWTFromPayload)
+	r.HandleFunc("/token", routes.GenerateJWTFromPayload).Methods("POST")
 
 	r.PathPrefix("/").Handler(http.FileServer(http.Dir("./static/")))
 	loggedRouter := handlers.LoggingHandler(os.Stdout, r)

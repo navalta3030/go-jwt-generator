@@ -21,6 +21,12 @@ spec:
             requests:
               memory: 100Mi
               cpu: 100m
+          env:
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: mysecret
+                  key: JWT_SECRET
 ---
 apiVersion: {{ template "version.fullname" .}}
 kind: Service
