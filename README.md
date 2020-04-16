@@ -1,4 +1,4 @@
-# Summary
+# Summary ![CI](https://github.com/navalta3030/go-jwt-generator/workflows/CI/badge.svg?branch=master)
 - This Rest Api endpoint aims to generate payload for the jwt which the api-gateway will sign.
 
 # Routes
