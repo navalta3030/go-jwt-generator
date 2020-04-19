@@ -1,7 +1,5 @@
 # Summary ![Production](https://github.com/navalta3030/go-jwt-generator/workflows/Production/badge.svg?branch=master) ![Staging](https://github.com/navalta3030/go-jwt-generator/workflows/Staging/badge.svg)
 
-- This Rest Api endpoint aims to generate payload for the jwt which the api-gateway will sign.
-
 # Routes
   - /token (POST)
     - Requires
