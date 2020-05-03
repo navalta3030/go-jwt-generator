@@ -1,0 +1,51 @@
+apiVersion: apps/{{ template "version.fullname" .}}
+kind: Deployment
+metadata:
+  name: {{ template "go_jwt.fullname" .}}
+spec:
+  replicas: {{ template "replicas.fullname" .}}
+  selector:
+    matchLabels:
+      component: {{ template "go_jwt.fullname" .}}
+  template:
+    metadata:
+      labels:
+        component: {{ template "go_jwt.fullname" .}}
+        auto-deployment-helper: {{ randAlphaNum 5 | quote }}
+    spec:
+      containers:
+        - name: client
+          image: navalta3030/{{ template "go_jwt.fullname" .}}
+          ports:
+            - containerPort: 8020
+          resources:
+            requests:
+              memory: 100Mi
+              cpu: 100m
+          env:
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: mysecret
+                  key: JWT_SECRET
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8020
+            initialDelaySeconds: 60
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8020
+---
+apiVersion: {{ template "version.fullname" .}}
+kind: Service
+metadata:
+  name: {{ template "go_jwt.fullname" .}}
+spec:
+  type: ClusterIP
+  selector:
+    component: {{ template "go_jwt.fullname" .}}
+  ports:
+    - name: endpoint
+      port: 8020
